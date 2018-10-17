@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FitlogService} from '../fitlog.service';
+import {ActivatedRoute} from '@angular/router';
+import {Activity} from '../event';
 
 @Component({
   selector: 'app-activity-detail',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() activity: Activity;
 
-  ngOnInit() {
+  constructor(
+    private fitlogService: FitlogService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.loadActivity();
+  }
+
+  loadActivity(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    // new measurement
+    if (id === 'new') {
+      this.activity = this.fitlogService.newActivity();
+    } else { // current measurement
+      const existing_id = +id;
+      this.fitlogService.getActivity(existing_id).subscribe(m => this.activity = m);
+    }
   }
 
 }

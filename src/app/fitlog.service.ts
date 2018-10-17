@@ -51,8 +51,22 @@ export class FitlogService {
 
   newMeasurement(): Measurement {
     const id = this.next_id++;
-    const ret = new Measurement(id, moment(), '', 0, '');
-    this.measurements[id] = ret;
+    const ret = new Measurement(id, moment(), 'Weight', 0, '');
+    this.measurements.set(id, ret);
+    return ret;
+  }
+
+  newActivity(): Activity {
+    const id = this.next_id++;
+    const ret = new Activity(id, moment());
+    this.activities.set(id, ret);
+    return ret;
+  }
+
+  newWorkout(): Workout {
+    const id = this.next_id++;
+    const ret = new Workout(id, moment());
+    this.workouts.set(id, ret);
     return ret;
   }
 
@@ -61,7 +75,11 @@ export class FitlogService {
     this.measurements.forEach((measurement: Measurement) => { events.push(measurement); });
     this.activities.forEach((activity: Activity) => { events.push(activity); });
     this.workouts.forEach((workout: Workout) => { events.push(workout); });
-    console.log('Now have ' + events.length + ' events to return');
+    // reverse date order please
+    events.sort((a: Event, b: Event) => b.event_date.diff(a.event_date));
+    if (events.length > 100) {
+      events.splice(100, events.length - 100);
+    }
     return of(events);
   }
 }

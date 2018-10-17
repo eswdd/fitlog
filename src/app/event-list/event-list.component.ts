@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EVENTS } from '../mock-events';
+import { Event } from '../event';
 import {FitlogService} from '../fitlog.service';
 
 @Component({
