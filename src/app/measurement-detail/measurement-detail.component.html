@@ -1,0 +1,18 @@
+<nav>
+  <a routerLink="/dashboard"><i class="material-icons">home</i></a>
+</nav>
+
+<div *ngIf="measurement">
+
+  <h4>{{measurement.name}} measurement</h4>
+  <div>{{measurement.event_date.format("DD MMM 'YY")}}</div>
+  <div>
+    <label>value:
+      <input [(ngModel)]="measurement.value" placeholder="value"/>
+    </label>
+    <label>units:
+      <input [(ngModel)]="measurement.unit" placeholder="units"/>
+    </label>
+  </div>
+
+</div>

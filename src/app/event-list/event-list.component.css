@@ -1,0 +1,53 @@
+/* HeroesComponent's private CSS styles */
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.events {
+  margin: 1em 0 1em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.events .eventText {
+  cursor: pointer;
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #EEE;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-left: 0;
+  border-radius: 0 4px 4px 0;
+}
+.events .eventText.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.events .eventText:hover {
+  color: #607D8B;
+  background-color: #DDD;
+}
+.events .text {
+  position: relative;
+  top: -3px;
+}
+.events .eventDate {
+  cursor: pointer;
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: 0;
+  border-radius: 4px 0 0 4px;
+}

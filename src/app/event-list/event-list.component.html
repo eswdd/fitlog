@@ -1,0 +1,8 @@
+<ul class="events">
+  <li *ngFor="let event of events">
+    <span class="eventDate" [class.selected]="event === selectedEvent" (click)="onSelect(event)">{{event.event_date.format("DD MMM 'YY")}}</span>
+    <span class="eventText" [class.selected]="event === selectedEvent" (click)="onSelect(event)">{{event.event_type}}</span>
+    <span (click)="onEdit(event)"><i class="material-icons">edit</i></span>
+    <span (click)="onDelete(event)"><i class="material-icons">delete</i></span>
+  </li>
+</ul>
